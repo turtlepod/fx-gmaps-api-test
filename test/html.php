@@ -27,10 +27,10 @@ function fx_gmaps_key_test( $key, $addr = '' ) {
 	$result = wp_remote_get(
 		esc_url_raw( $url ),
 		array(
-			'timeout'     => 5,
+			'timeout'     => 10,
 			'redirection' => 1,
 			'httpversion' => '1.1',
-			'user-agent'  => 'WordPress/FXtest; ',
+			'user-agent'  => 'WordPress/fxGmapsAPITest; ',
 			'sslverify'   => false,
 		)
 	);
@@ -41,8 +41,6 @@ function fx_gmaps_key_test( $key, $addr = '' ) {
 	return json_decode( $result, true );
 }
 
-
-
 // Fields.
 $option = get_option( 'fx_gmaps_api_test', array() );
 $key = isset( $option['key'] ) ? $option['key'] : '';
@@ -51,7 +49,7 @@ $addr = isset( $option['addr'] ) ? $option['addr'] : '';
 <p><input type="text" class="regular-text" name="fx_gmaps_api_test[key]" value="<?php echo esc_attr( $key ); ?>" placeholder="Google Maps API Key"> API Key</p>
 <p><input type="text" class="regular-text" name="fx_gmaps_api_test[addr]" value="<?php echo esc_attr( $addr ); ?>" placeholder="Address to test"> Address</p>
 
-<?php if ( $key && $addr ) : ?>
+<?php if ( $key || $addr ) : ?>
 <pre id="gmaps-results">
 <?php var_dump( fx_gmaps_key_test( $key, $addr ) ); ?>
 </pre>

@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: f(x) Google Maps API Test
- * Plugin URI: https://github.com/turtlepod/wp-settings-test
+ * Plugin Name: f(x) Google Maps API Key Test
+ * Plugin URI: https://github.com/turtlepod/fx-gmaps-api-test
  * Description: Test Google Maps API for Geolocation.
  * Version: 1.0.0
  * Author: David Chandra Purnama
@@ -48,13 +48,13 @@ add_action( 'plugins_loaded', function() {
 		// Add page.
 		$page = add_menu_page(
 			$page_title  = 'Google Maps API Test',
-			$menu_title  = 'GMaps API Test',
+			$menu_title  = 'GMaps Key Test',
 			$capability  = 'manage_options',
 			$menu_slug   = PREFIX,
 			$function    = function() {
 				?>
 				<div class="wrap">
-					<h1>Google Maps API Test</h1>
+					<h1>Google Maps API Key Test</h1>
 					<form method="post" action="options.php">
 						<?php settings_errors(); ?>
 						<?php require_once( PATH . 'test/html.php' ); ?>
